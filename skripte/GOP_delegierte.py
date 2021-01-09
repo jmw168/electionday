@@ -3,7 +3,7 @@ import yaml
 
 
 def lese_yaml(dateiname):
-    with open('../Daten/' + dateiname + '.yaml') as datei:
+    with open('Daten/' + dateiname + '.yaml') as datei:
         daten = yaml.safe_load(datei)
     return daten
 
