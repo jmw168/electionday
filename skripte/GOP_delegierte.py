@@ -15,10 +15,10 @@ def main():
     wahlergebnis = wahlergebnisse[-1]
     delegierte = {}
     for staat in allgemein['Staaten'].keys():
-        anzahl_abgeordnete = len([abgeordneter for abgeordneter in abgeordnete if
-                                  abgeordneter['Staat'] == staat and abgeordneter['Partei'] == 'R'])
-        bonus = int(np.floor(0.6 * wahlergebnis[staat]['WM'])) if wahlergebnis[staat]['R'] > wahlergebnis[staat][
-            'D'] else 0
+        anzahl_abgeordnete = len([abgeordneter for abgeordneter in abgeordnete if abgeordneter['Staat'] == staat])
+        # bonus = int(np.floor(0.6 * wahlergebnis[staat]['WM'])) if wahlergebnis[staat]['R'] > wahlergebnis[staat][
+        #     'D'] else 0
+        bonus = 0
         anzahl = 10 + 3 * anzahl_abgeordnete + bonus
         delegierte.update({staat: anzahl})
     print(delegierte)
