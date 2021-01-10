@@ -1,2 +1,2 @@
 language = "python3"
-run = "git pull https://github.com/jmw168/electionday; python skripte/GOP_delegierte.py"
+run = "git pull https://github.com/jmw168/electionday"
