@@ -14,7 +14,11 @@ def plot(delegierte):
     import cartopy.io.shapereader as shpreader
     import matplotlib.pyplot as plt
 
+    font_dict = {'fontsize': 'xx-large'}
+
     fig = plt.figure()
+    plt.figtext(0.5, 0.9, 'Delegierte je Staat in der republikanischen Vorwahl', ha='center', va='top',
+                fontdict=font_dict)
     ax = {
         'WA': fig.add_axes([0.00, 0, 0.33, 1], projection=ccrs.PlateCarree(), frameon=False),
         'UT': fig.add_axes([0.33, 0, 0.33, 1], projection=ccrs.PlateCarree(), frameon=False),
@@ -26,9 +30,9 @@ def plot(delegierte):
     ax['WA'].set_extent([-125, -116, 45, 49], ccrs.Geodetic())
     ax['UT'].set_extent([-115, -109, 36, 42], ccrs.Geodetic())
     ax['FL'].set_extent([-88, -79.9, 24, 31], ccrs.Geodetic())
-    ax['WA'].set_title('Washington')
-    ax['UT'].set_title('Utah')
-    ax['FL'].set_title('Florida')
+    ax['WA'].set_title('Washington', fontsize='x-large')
+    ax['UT'].set_title('Utah', fontsize='x-large')
+    ax['FL'].set_title('Florida', fontsize='x-large')
 
     shape_name = 'admin_1_states_provinces_lakes_shp'
     states_shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shape_name)
@@ -42,7 +46,11 @@ def plot(delegierte):
                                                           facecolor='white',
                                                           edgecolor='black')
 
-    ax['WA'].text(0, 0, 'abc')
+    basis_x = 0.17
+    for staat in ['WA', 'UT', 'FL']:
+        plt.figtext(basis_x, 0.5, str(delegierte[staat]), ha='center', va='center',
+                    fontdict=font_dict)
+        basis_x += 0.33
 
     # ax.add_geometries(
     #     shpreader.Reader(states_shp).geometries(),
