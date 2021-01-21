@@ -24,7 +24,7 @@ def main():
         republikanische_senatoren = len(
             [senator for senator in senat if senator['Staat'] == staat and senator['Partei'] == 'R'])
         anzahl = 10 + 3 * anzahl_abgeordnete + bonus + (
-                    republikanische_abgeordnete > 0.5 * anzahl_abgeordnete) + republikanische_senatoren
+                    republikanische_abgeordnete > 0.5 * anzahl_abgeordnete) + republikanische_senatoren + 1 # +1 Superdelegierten
         delegierte.update({staat: anzahl})
     print(delegierte)
 
